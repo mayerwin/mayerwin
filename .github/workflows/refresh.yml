@@ -1,0 +1,32 @@
+name: Refresh star counts
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install fonttools==4.62.1 brotli==1.2.0
+      - run: python generator/build.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # This repo keeps a single commit: fold any change into it instead of adding history.
+      - name: Amend the single commit if anything changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "$(git log -1 --format=%an)"
+            git config user.email "$(git log -1 --format=%ae)"
+            git add -A
+            git commit --amend --no-edit
+            git push --force
+          fi
