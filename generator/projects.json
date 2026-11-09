@@ -1,0 +1,571 @@
+{
+  "profile": {
+    "first": "Erwin",
+    "last": "Mayer",
+    "kicker": "IA ORA NA, WORLD",
+    "kickerEmoji": "🌺",
+    "kickerAlternatives": [
+      [
+        "🏝️",
+        "MERGING TO MAIN, FAR FROM THE MAINLAND"
+      ],
+      [
+        "📡",
+        "HIGH LATENCY, HIGHER THROUGHPUT"
+      ],
+      [
+        "🧭",
+        "17°S 149°W · ~/PARADISE"
+      ],
+      [
+        "🥥",
+        "GIT PUSH --FROM-PARADISE"
+      ],
+      [
+        "⏰",
+        "UTC−10 AND STILL COMMITTED"
+      ],
+      [
+        "🏝️",
+        "TAHITI · FRENCH POLYNESIA"
+      ]
+    ],
+    "tagline": "👋 I build software and give most of it away: games, music apps, AI agent tools, smart-home integrations, Windows utilities, editor and browser extensions, and a few things for island life.",
+    "website": "https://www.erwinmayer.com",
+    "owners": [
+      "mayerwin",
+      "sonora-live",
+      "tidesight-analytics",
+      "chainedtimers",
+      "backspace-backup",
+      "cap-cotier-polynesie",
+      "whatsphone",
+      "duplimate"
+    ]
+  },
+  "categories": [
+    {
+      "slug": "games",
+      "title": "Games",
+      "emoji": "🎮",
+      "style": "app",
+      "accent": "orange",
+      "items": [
+        {
+          "slug": "boom-buds",
+          "emoji": "💣",
+          "name": "Boom Buds",
+          "label": "GAME · PARTY",
+          "desc": "Bomb-dropping party game for up to 10 players: on one screen, over the local network or online.",
+          "url": "https://mayerwin.github.io/Boom-Buds/",
+          "repo": "mayerwin/Boom-Buds"
+        },
+        {
+          "slug": "pong-wars-reloaded",
+          "emoji": "🏓",
+          "name": "Pong Wars Reloaded",
+          "label": "GAME · MULTIPLAYER",
+          "desc": "Pong Wars, Day vs Night, reloaded with rackets, power-ups, AI opponents, board rotation and custom physics.",
+          "url": "https://mayerwin.github.io/pong-wars-reloaded/",
+          "repo": "mayerwin/pong-wars-reloaded"
+        },
+        {
+          "slug": "escalier",
+          "emoji": "🃏",
+          "name": "Escalier Score Keeper",
+          "label": "CARD GAMES · OFFLINE",
+          "desc": "Offline-first score keeper for Oh Hell (Escalier) with shareable game links, in several languages.",
+          "url": "https://mayerwin.github.io/Escalier-Oh-Hell-Score-Keeper/",
+          "repo": "mayerwin/Escalier-Oh-Hell-Score-Keeper"
+        },
+        {
+          "slug": "boplfix",
+          "emoji": "🎮",
+          "name": "BoplFix",
+          "label": "GAME MOD",
+          "desc": "Bopl Battle mod: direct P2P connections instead of relays, and keybindings that stick.",
+          "repo": "mayerwin/BoplFix",
+          "url": "https://github.com/mayerwin/BoplFix/releases/latest"
+        },
+        {
+          "slug": "circus-party",
+          "emoji": "🎪",
+          "name": "Digital Circus Party App",
+          "label": "PARTY · 3D · AI VOICE",
+          "desc": "Self-hosted birthday party app with a 3D AI ringmaster, a cloned voice and iPad push-to-talk.",
+          "repo": "mayerwin/Amazing-Digital-Circus-Birthday-Party-App"
+        }
+      ]
+    },
+    {
+      "slug": "music",
+      "title": "Music",
+      "emoji": "🎹",
+      "style": "app",
+      "accent": "rose",
+      "items": [
+        {
+          "slug": "sonora-live",
+          "emoji": "🎹",
+          "name": "Sonora Live",
+          "label": "MUSIC · WEBRTC · WEB MIDI",
+          "desc": "Remote music lessons in the browser: P2P video, pure instrument audio and two-way MIDI between teacher and student pianos.",
+          "url": "https://sonora-live.github.io/",
+          "repo": "sonora-live/sonora-live"
+        },
+        {
+          "slug": "note-master",
+          "emoji": "🎼",
+          "name": "Note Master",
+          "label": "MUSIC THEORY · SPACED REPETITION",
+          "desc": "Learn to read piano notes on treble and bass clefs, with practice scheduled by the FSRS spaced-repetition algorithm.",
+          "url": "https://notemaster.erwinmayer.com/"
+        },
+        {
+          "slug": "halloween-soundboard",
+          "emoji": "🎃",
+          "name": "Halloween Soundboard",
+          "label": "PWA · SOUNDBOARD",
+          "desc": "260+ spooky sounds with a haunt mode, installable and working offline.",
+          "url": "https://mayerwin.github.io/halloween-soundboard/",
+          "repo": "mayerwin/halloween-soundboard"
+        },
+        {
+          "slug": "midi-notes-player",
+          "emoji": "🎵",
+          "name": "MIDI Notes Player",
+          "label": "MUSIC · WEB AUDIO",
+          "desc": "Sequence and play notes across 50+ instruments, right in the browser.",
+          "url": "https://mayerwin.github.io/MIDI-Notes-Player/",
+          "repo": "mayerwin/MIDI-Notes-Player"
+        },
+        {
+          "slug": "bt-midi",
+          "emoji": "🎛️",
+          "name": "Perfect Bluetooth MIDI",
+          "label": "WINDOWS · MIDI",
+          "desc": "Bridge Bluetooth LE MIDI instruments into Windows MIDI Services, with stable reconnection and low latency.",
+          "url": "https://mayerwin.github.io/Perfect-Bluetooth-MIDI-For-Windows/",
+          "linkText": "download",
+          "repo": "mayerwin/Perfect-Bluetooth-MIDI-For-Windows"
+        }
+      ]
+    },
+    {
+      "slug": "backups",
+      "title": "Backups",
+      "emoji": "💾",
+      "style": "tool",
+      "accent": "gold",
+      "items": [
+        {
+          "slug": "backspace",
+          "emoji": "🔐",
+          "name": "Backspace",
+          "label": "WINDOWS · ENCRYPTED BACKUP",
+          "desc": "Set-and-forget encrypted backups to Dropbox, OneDrive, Google Drive, S3 or local disks, with automated restore verification.",
+          "url": "https://backspace-backup.github.io/",
+          "repo": "backspace-backup/backspace"
+        },
+        {
+          "slug": "photobox-pdf",
+          "emoji": "📚",
+          "name": "Photobox Book To PDF",
+          "label": "EXPORT",
+          "desc": "Export Photobox photo books to high-resolution PDF.",
+          "repo": "mayerwin/Photobox-Book-To-PDF"
+        },
+        {
+          "slug": "todoist-export",
+          "emoji": "✅",
+          "name": "Todoist Export",
+          "label": "BACKUP",
+          "desc": "Back up Todoist tasks, projects and metadata.",
+          "repo": "mayerwin/todoist-export"
+        },
+        {
+          "slug": "trakt-backup",
+          "emoji": "🎬",
+          "name": "Trakt.tv Backup",
+          "label": "BACKUP · POWERSHELL",
+          "desc": "Back up your Trakt.tv watch history and ratings with one script.",
+          "repo": "mayerwin/trakt-tv-backup"
+        }
+      ]
+    },
+    {
+      "slug": "analytics",
+      "title": "Analytics",
+      "emoji": "📊",
+      "style": "app",
+      "accent": "teal",
+      "items": [
+        {
+          "slug": "tidesight",
+          "emoji": "🌊",
+          "name": "Tidesight",
+          "label": "WEB ANALYTICS · SELF-HOSTED",
+          "desc": "Lightweight web analytics that keeps every raw hit. Full dashboard, session replays and Web Vitals, on low-cost shared hosting.",
+          "url": "https://tidesight-analytics.github.io/",
+          "repo": "tidesight-analytics/tidesight",
+          "linkText": "live demo"
+        }
+      ]
+    },
+    {
+      "slug": "boating",
+      "title": "Boating",
+      "emoji": "⛵",
+      "style": "app",
+      "accent": "blue",
+      "items": [
+        {
+          "slug": "cap-cotier",
+          "emoji": "⛵",
+          "name": "Cap Côtier Polynésie",
+          "label": "BOAT LICENCE · FRENCH POLYNESIA",
+          "desc": "Free prep for the Polynesian boat licence: illustrated lessons, 1,000+ practice questions and timed mock exams.",
+          "url": "https://cap-cotier-polynesie.github.io/",
+          "repo": "cap-cotier-polynesie/cap-cotier-polynesie.github.io"
+        }
+      ]
+    },
+    {
+      "slug": "productivity",
+      "title": "Productivity",
+      "emoji": "📱",
+      "style": "app",
+      "accent": "green",
+      "items": [
+        {
+          "slug": "phonestick",
+          "emoji": "📲",
+          "name": "Phonestick",
+          "label": "WINDOWS · ANDROID · WI-FI",
+          "desc": "Your Android phone as a USB stick over Wi-Fi: it shows up as drive P: in Windows Explorer. No cable, no cloud, no account.",
+          "url": "https://mayerwin.github.io/Phonestick/",
+          "linkText": "download",
+          "repo": "mayerwin/Phonestick"
+        },
+        {
+          "slug": "chained-timers",
+          "emoji": "⏱️",
+          "name": "Chained Timers",
+          "label": "PWA · ANDROID",
+          "desc": "The interval forge. Sequence timers into named chains for sport, breathwork, cooking and study. Installable web app and native Android.",
+          "url": "https://chainedtimers.github.io/",
+          "repo": "chainedtimers/chained-timers"
+        },
+        {
+          "slug": "whatsphone",
+          "emoji": "💬",
+          "name": "WhatsPhone",
+          "label": "WEB APP · MESSAGING",
+          "desc": "Open a WhatsApp chat with any phone number without saving it to your contacts first.",
+          "url": "https://whatsphone.github.io/",
+          "repo": "whatsphone/whatsphone.github.io"
+        }
+      ]
+    },
+    {
+      "slug": "ai",
+      "title": "SI and agents",
+      "emoji": "🤖",
+      "style": "tool",
+      "accent": "indigo",
+      "items": [
+        {
+          "slug": "agent-sentinel",
+          "emoji": "🛡️",
+          "name": "Agent Sentinel",
+          "label": "CLAUDE CODE",
+          "desc": "Supervisor that resumes Claude Code agents after rate limits and crashes.",
+          "repo": "mayerwin/Agent-Sentinel"
+        },
+        {
+          "slug": "teleporter",
+          "emoji": "🚀",
+          "name": "Teleporter",
+          "label": "CLI · AGENTS",
+          "desc": "Move live agent projects between a Windows laptop and an always-on Linux server.",
+          "repo": "mayerwin/Teleporter"
+        },
+        {
+          "slug": "openwebui-image-models",
+          "emoji": "🖼️",
+          "name": "Open WebUI Image Models",
+          "label": "LLAMA-SWAP · COMFYUI",
+          "desc": "Route image-generation models from Open WebUI to llama-swap and ComfyUI.",
+          "repo": "mayerwin/open-webui-llamaswap-image-models"
+        },
+        {
+          "slug": "ai-arena-history",
+          "emoji": "🏆",
+          "name": "AI Arena History",
+          "label": "LLM BENCHMARKS · CHARTS",
+          "desc": "Daily snapshots and interactive history charts of LLM arena Elo scores across flagship models.",
+          "url": "https://mayerwin.github.io/AI-Arena-History/",
+          "repo": "mayerwin/AI-Arena-History"
+        }
+      ]
+    },
+    {
+      "slug": "smarthome",
+      "title": "Smart home",
+      "emoji": "🏠",
+      "style": "tool",
+      "accent": "cyan",
+      "items": [
+        {
+          "slug": "ha-merge-history",
+          "emoji": "📈",
+          "name": "HA Merge Sensor History",
+          "label": "HOME ASSISTANT",
+          "desc": "Import and merge historical sensor data between entities, safely and idempotently.",
+          "repo": "mayerwin/HA-Merge-Sensor-History",
+          "url": "https://my.home-assistant.io/redirect/hacs_repository/?owner=mayerwin&repository=HA-Merge-Sensor-History&category=integration"
+        },
+        {
+          "slug": "ha-real-last-changed",
+          "emoji": "⏰",
+          "name": "Real Last Changed / Seen",
+          "label": "HOME ASSISTANT",
+          "desc": "Last-changed and last-seen timestamp sensors that survive restarts.",
+          "repo": "mayerwin/HA-Real-Last-Changed-Reported-Seen-Sensors",
+          "url": "https://my.home-assistant.io/redirect/hacs_repository/?owner=mayerwin&repository=HA-Real-Last-Changed-Reported-Seen-Sensors&category=integration"
+        },
+        {
+          "slug": "ha-fusionsolar",
+          "emoji": "☀️",
+          "name": "FusionSolar Statistics",
+          "label": "HOME ASSISTANT",
+          "desc": "Huawei FusionSolar statistics card, computed locally with no cloud API.",
+          "repo": "mayerwin/ha-fusionsolar-statistics",
+          "url": "https://my.home-assistant.io/redirect/hacs_repository/?owner=mayerwin&repository=ha-fusionsolar-statistics&category=dashboard"
+        },
+        {
+          "slug": "ha-view-aware-polling",
+          "emoji": "👀",
+          "name": "View-Aware Polling",
+          "label": "HOME ASSISTANT",
+          "desc": "Poll expensive devices only while their card or dashboard is open.",
+          "repo": "mayerwin/ha-view-aware-polling",
+          "url": "https://my.home-assistant.io/redirect/hacs_repository/?owner=mayerwin&repository=ha-view-aware-polling&category=integration"
+        },
+        {
+          "slug": "ha-switchbot-quick-key",
+          "emoji": "🔒",
+          "name": "SwitchBot Lock Quick Key",
+          "label": "HOME ASSISTANT",
+          "desc": "Exposes SwitchBot Lock Ultra Quick Key settings over Bluetooth.",
+          "repo": "mayerwin/ha-switchbot-lock-quick-key-support",
+          "url": "https://my.home-assistant.io/redirect/hacs_repository/?owner=mayerwin&repository=ha-switchbot-lock-quick-key-support&category=integration"
+        },
+        {
+          "slug": "ha-cloudflare-recovery",
+          "emoji": "🔑",
+          "name": "Cloudflare Access Recovery",
+          "label": "HOME ASSISTANT",
+          "desc": "Brings the HA frontend back when Cloudflare Access cookies expire.",
+          "repo": "mayerwin/HA-Cloudflare-Access-Recovery"
+        },
+        {
+          "slug": "frigate-face",
+          "emoji": "🙂",
+          "name": "Frigate Better Face Recognition",
+          "label": "FRIGATE NVR",
+          "desc": "Local CPU face recognition with InsightFace SCRFD and ArcFace.",
+          "repo": "mayerwin/frigate-better-face-recognition"
+        },
+        {
+          "slug": "frigate-layout-sync",
+          "emoji": "📐",
+          "name": "Frigate Layout Sync",
+          "label": "FRIGATE NVR",
+          "desc": "Save and sync camera-group layouts across all your devices.",
+          "repo": "mayerwin/frigate-layout-sync"
+        }
+      ]
+    },
+    {
+      "slug": "windows",
+      "title": "Windows utilities",
+      "emoji": "🖥️",
+      "style": "tool",
+      "accent": "blue",
+      "items": [
+        {
+          "slug": "video-capture-viewer",
+          "emoji": "📺",
+          "name": "Video Capture Card Viewer",
+          "label": "WINDOWS",
+          "desc": "Single-exe, low-latency viewer for USB capture cards in a borderless 1:1 window.",
+          "url": "https://mayerwin.github.io/Video-Capture-Card-Viewer/",
+          "linkText": "download",
+          "repo": "mayerwin/Video-Capture-Card-Viewer"
+        },
+        {
+          "slug": "extract-audio",
+          "emoji": "🎧",
+          "name": "Extract Audio Tracks",
+          "label": "WINDOWS · FFMPEG",
+          "desc": "Pull every language's audio track out of a video file in one go.",
+          "repo": "mayerwin/extract-audio-tracks-from-video",
+          "url": "https://github.com/mayerwin/extract-audio-tracks-from-video/releases/latest"
+        },
+        {
+          "slug": "network-toggle",
+          "emoji": "🌐",
+          "name": "Network Adapters Toggle",
+          "label": "WINDOWS",
+          "desc": "A small dark-themed GUI to enable or disable network adapters.",
+          "repo": "mayerwin/Network-Adapters-Toggle",
+          "url": "https://github.com/mayerwin/Network-Adapters-Toggle/releases/latest"
+        }
+      ]
+    },
+    {
+      "slug": "research",
+      "title": "Research",
+      "emoji": "📈",
+      "style": "tool",
+      "accent": "rose",
+      "items": [
+        {
+          "slug": "sg-reits-benchmark",
+          "emoji": "🏢",
+          "name": "Singapore REITs Benchmark",
+          "label": "FINANCE · SCREENER",
+          "desc": "S-REIT screener with SGX investor-relations data, gearing, property yields and quality scores.",
+          "url": "https://mayerwin.github.io/sg-reits-benchmark/",
+          "repo": "mayerwin/sg-reits-benchmark"
+        },
+        {
+          "slug": "emd-volatility",
+          "emoji": "📉",
+          "name": "EMD Volatility Forecasting",
+          "label": "PAPER · QUANT FINANCE",
+          "desc": "Paper and test harness on the real limits of Empirical Mode Decomposition for volatility forecasting.",
+          "repo": "mayerwin/emd-volatility-forecasting"
+        }
+      ]
+    },
+    {
+      "slug": "vs",
+      "title": "Visual Studio extensions",
+      "emoji": "🧩",
+      "style": "tool",
+      "accent": "indigo",
+      "items": [
+        {
+          "slug": "vs-window-title",
+          "emoji": "🪟",
+          "name": "Customize VS Window Title",
+          "label": "VISUAL STUDIO",
+          "desc": "Put the Git branch, folder path or solution name in Visual Studio's window title.",
+          "url": "https://marketplace.visualstudio.com/items?itemName=mayerwin.RenameVisualStudioWindowTitle",
+          "repo": "mayerwin/vs-customize-window-title"
+        },
+        {
+          "slug": "vs-debug-single-thread",
+          "emoji": "🐞",
+          "name": "Debug Single Thread",
+          "label": "VISUAL STUDIO",
+          "desc": "Freeze background threads while stepping, so the debugger stays on the code you are reading.",
+          "url": "https://marketplace.visualstudio.com/items?itemName=mayerwin.DebugSingleThread",
+          "repo": "mayerwin/vs-debug-single-thread"
+        },
+        {
+          "slug": "vs-disable-no-source-tab",
+          "emoji": "🚫",
+          "name": "Disable No Source Tab",
+          "label": "VISUAL STUDIO",
+          "desc": "Stop Visual Studio opening \"No Source Available\" tabs when stepping into framework code.",
+          "url": "https://marketplace.visualstudio.com/items?itemName=mayerwin.DisableNoSourceAvailableTab",
+          "repo": "mayerwin/vs-disable-no-source-tab"
+        }
+      ]
+    },
+    {
+      "slug": "vscode",
+      "title": "VS Code extensions",
+      "emoji": "⌨️",
+      "style": "tool",
+      "accent": "blue",
+      "items": [
+        {
+          "slug": "ai-agent-sound",
+          "emoji": "🔔",
+          "name": "AI Agent Sound Notification",
+          "label": "VS CODE",
+          "desc": "Plays a sound when Claude Code or another agent is waiting for you.",
+          "repo": "mayerwin/AI-Agent-Sound-Notification",
+          "url": "https://marketplace.visualstudio.com/items?itemName=mayerwin.ai-agent-sound-notification"
+        },
+        {
+          "slug": "explorer-file-filter",
+          "emoji": "🔎",
+          "name": "Explorer File Filter",
+          "label": "VS CODE",
+          "desc": "A filter button for the VS Code file explorer.",
+          "repo": "mayerwin/explorer-file-filter",
+          "url": "https://marketplace.visualstudio.com/items?itemName=mayerwin.explorer-file-filter"
+        }
+      ]
+    },
+    {
+      "slug": "chrome",
+      "title": "Chrome extensions",
+      "emoji": "🌐",
+      "style": "tool",
+      "accent": "gold",
+      "items": [
+        {
+          "slug": "bookmark-icon-customizer",
+          "emoji": "🔖",
+          "name": "Bookmark Icon Customizer",
+          "label": "CHROME",
+          "desc": "Change the icons of your bookmark bar.",
+          "repo": "mayerwin/Bookmark-Icon-Customizer",
+          "url": "https://chromewebstore.google.com/detail/bookmark-icon-customizer/fhngdjipelbebhdnkpealakcckpjpjpn"
+        },
+        {
+          "slug": "superlevels",
+          "emoji": "⚡",
+          "name": "Superlevels",
+          "label": "CHROME",
+          "desc": "Privacy-hardened productivity extension with handy shortcuts.",
+          "repo": "mayerwin/superlevels"
+        }
+      ]
+    },
+    {
+      "slug": "thunderbird",
+      "title": "Thunderbird extensions",
+      "emoji": "🐦",
+      "style": "tool",
+      "accent": "cyan",
+      "items": [
+        {
+          "slug": "thunderbird-dupes",
+          "emoji": "📧",
+          "name": "Hide All Mail Duplicates",
+          "label": "THUNDERBIRD",
+          "desc": "Hide duplicate Gmail \"All Mail\" results from Thunderbird searches.",
+          "repo": "mayerwin/thunderbird-hide-all-mail-duplicates",
+          "url": "https://github.com/mayerwin/thunderbird-hide-all-mail-duplicates/releases/latest"
+        }
+      ]
+    }
+  ],
+  "hidden": [
+    {
+      "slug": "spdif-ka",
+      "emoji": "🔊",
+      "name": "SPDIF Keep Alive",
+      "label": "WINDOWS · AUDIO",
+      "desc": "Keeps optical SPDIF receivers awake so the first notes are never cut.",
+      "repo": "mayerwin/spdif-ka"
+    }
+  ]
+}

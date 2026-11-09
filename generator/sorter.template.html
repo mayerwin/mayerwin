@@ -1,0 +1,226 @@
+<title>Profile README Sorter</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a lagoon-coloured board of category panels in a wrapping grid; items are chips dragged between panels. */
+:root {
+  --bg: #f3f7f6;
+  --panel: #ffffff;
+  --panel-2: #eaf2f0;
+  --ink: #12302c;
+  --muted: #5b7470;
+  --line: #d3e2df;
+  --accent: #0f8a7e;
+  --accent-ink: #ffffff;
+  --moved: #b4561f;
+  --moved-bg: #fbeee4;
+  --hidden-bg: #eef0ef;
+  --shadow: 0 1px 2px rgba(18,48,44,.06), 0 6px 18px rgba(18,48,44,.06);
+  --f-display: "Instrument Serif", Georgia, serif;
+  --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0b1918; --panel: #11231f; --panel-2: #163029; --ink: #e2efec; --muted: #8fa9a4;
+  --line: #24403a; --accent: #3cc4b3; --accent-ink: #062320; --moved: #f0a06a; --moved-bg: #3a2414;
+  --hidden-bg: #141c1b; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0b1918; --panel: #11231f; --panel-2: #163029; --ink: #e2efec; --muted: #8fa9a4;
+  --line: #24403a; --accent: #3cc4b3; --accent-ink: #062320; --moved: #f0a06a; --moved-bg: #3a2414;
+  --hidden-bg: #141c1b; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 18px rgba(0,0,0,.25); color-scheme: dark; }
+
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+header.top { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: end; justify-content: space-between; margin-bottom: 20px; }
+h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(34px, 5vw, 48px); line-height: 1; margin: 0; text-wrap: balance; }
+h1 em { color: var(--accent); }
+.sub { color: var(--muted); max-width: 62ch; margin: 8px 0 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.status { font-family: var(--f-mono); font-size: 12px; color: var(--muted); letter-spacing: .02em; min-width: 9ch; }
+.status.err { color: var(--moved); }
+button { font: 500 14px var(--f-body); border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 8px 14px; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); font-weight: 600; }
+button.primary.isdone { background: var(--panel); color: var(--accent); }
+button.small { padding: 4px 9px; font-size: 13px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); margin: 0 0 18px; }
+.legend span { display: inline-flex; gap: 6px; align-items: center; }
+
+.board { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; align-items: start; }
+.cat { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); min-width: 0; display: flex; flex-direction: column; }
+.cat.hidden-bucket { background: var(--hidden-bg); border-style: dashed; box-shadow: none; }
+.cat-head { display: flex; align-items: center; gap: 6px; padding: 10px 10px 8px 6px; border-bottom: 1px solid var(--line); }
+.grip { cursor: grab; color: var(--muted); padding: 4px 4px; font-size: 16px; line-height: 1; user-select: none; touch-action: none; }
+.grip:active { cursor: grabbing; }
+.cat-emoji { width: 2.1em; font-size: 20px; text-align: center; border: 1px solid transparent; background: transparent; border-radius: 6px; padding: 2px 0; color: var(--ink); }
+.cat-title { flex: 1; min-width: 0; font-family: var(--f-display); font-size: 23px; line-height: 1.1; border: 1px solid transparent; background: transparent; color: var(--ink); border-radius: 6px; padding: 2px 4px; }
+.cat-emoji:hover, .cat-title:hover { border-color: var(--line); }
+.count { font-family: var(--f-mono); font-size: 12px; color: var(--muted); }
+.del { border: none; background: none; color: var(--muted); padding: 2px 6px; font-size: 16px; }
+.del:hover { color: var(--moved); }
+.why { font-size: 12.5px; color: var(--muted); padding: 8px 12px 0; margin: 0; }
+
+.items { list-style: none; margin: 0; padding: 8px; min-height: 52px; display: flex; flex-direction: column; gap: 6px; }
+.items:empty::after { content: "Drop projects here"; color: var(--muted); font-size: 13px; text-align: center; padding: 12px 0; border: 1px dashed var(--line); border-radius: 8px; }
+.item { display: grid; grid-template-columns: 28px 1fr; gap: 2px 8px; align-items: start; padding: 8px 10px; border-radius: 8px; background: var(--panel-2); border: 1px solid transparent; cursor: grab; touch-action: none; user-select: none; }
+.item:hover { border-color: var(--line); }
+.item .e { font-size: 19px; line-height: 1.3; grid-row: span 2; }
+.item .n { font-weight: 600; min-width: 0; }
+.item .meta { min-width: 0; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+.item .l { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; color: var(--muted); }
+.item .from { font-size: 11.5px; color: var(--moved); background: var(--moved-bg); border-radius: 999px; padding: 0 7px; }
+.item .d { grid-column: 2; font-size: 12.5px; color: var(--muted); display: none; }
+.board.show-desc .item .d { display: block; }
+.ghost { opacity: .35; }
+.chosen { box-shadow: 0 0 0 2px var(--accent); }
+
+.foot { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 22px; max-width: 760px; }
+.foot label { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+textarea { width: 100%; min-height: 90px; resize: vertical; font: 14px/1.5 var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; box-sizing: border-box; }
+.confirm { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); }
+.check { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Sort the <em>profile</em> projects</h1>
+      <p class="sub">Drag projects between categories and up or down inside them (order is kept). Drag a category by its ⠿ handle to reorder sections. Click a title or emoji to rename. Changes save as you go; press Done when finished.</p>
+    </div>
+    <div class="actions">
+      <span class="status" id="status" aria-live="polite">Loading…</span>
+      <label class="check"><input type="checkbox" id="showDesc"> Descriptions</label>
+      <button id="addCat">+ Category</button>
+      <span id="resetWrap"><button id="reset">Reset to live layout</button></span>
+      <button class="primary" id="done">Done</button>
+    </div>
+  </header>
+  <div class="legend">
+    <span><span class="from" style="font-size:11.5px;color:var(--moved);background:var(--moved-bg);border-radius:999px;padding:0 7px">from Tools</span> sits in a different section on the live page</span>
+    <span>"Hide from README" keeps a project out of the page without losing it</span>
+  </div>
+  <div class="board" id="board"></div>
+  <div class="foot">
+    <label for="notes">Notes for Claude</label>
+    <textarea id="notes" placeholder="Anything else: card style per section, a project to drop, a better name…"></textarea>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+<script>
+const P = /*CATALOG*/{};
+const SUGGESTION = /*LAYOUT*/[];
+const BASE = "/*BASE*/";
+
+let state = {categories: structuredClone(SUGGESTION), notes:"", done:false};
+let db = null, ref = null, saveTimer = null, saving = false, pending = false, lastJson = "";
+const $ = s => document.querySelector(s);
+const boardEl = $("#board"), statusEl = $("#status");
+let sortables = [];
+
+function setStatus(t, err){ statusEl.textContent = t; statusEl.classList.toggle("err", !!err); }
+
+function el(tag, attrs={}, kids=[]){ const n=document.createElement(tag); for(const[k,v] of Object.entries(attrs)){ if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else n.setAttribute(k,v);} for(const k of kids) n.append(k); return n; }
+
+function render(){
+  sortables.forEach(s=>s.destroy()); sortables=[];
+  boardEl.replaceChildren();
+  // make sure every project is placed exactly once
+  const seen = new Set();
+  for(const c of state.categories) c.items = c.items.filter(s => P[s] && !seen.has(s) && seen.add(s));
+  const missing = Object.keys(P).filter(s=>!seen.has(s));
+  if(missing.length){ let h=state.categories.find(c=>c.hidden); if(!h){h={id:"hidden",emoji:"🙈",title:"Hide from README",hidden:true,items:[]}; state.categories.push(h);} h.items.push(...missing); }
+
+  for(const c of state.categories){
+    const ul = el("ul",{class:"items","data-cat":c.id});
+    for(const s of c.items){
+      const [e,n,l,d,origId,origTitle] = P[s];
+      const meta = el("div",{class:"meta"},[el("span",{class:"l",text:l})]);
+      if(origId!==c.id) meta.append(el("span",{class:"from",text: origId==="hidden" ? "hidden on live page" : "from "+origTitle}));
+      ul.append(el("li",{class:"item","data-slug":s},[el("span",{class:"e",text:e}),el("span",{class:"n",text:n}),meta,el("span",{class:"d",text:d})]));
+    }
+    const emo = el("input",{class:"cat-emoji",value:c.emoji,"aria-label":"Section emoji",id:"emoji-"+c.id});
+    const tit = el("input",{class:"cat-title",value:c.title,"aria-label":"Section title",id:"title-"+c.id});
+    emo.addEventListener("change",()=>{c.emoji=emo.value.trim(); changed();});
+    tit.addEventListener("change",()=>{c.title=tit.value.trim()||"Untitled"; changed(); render();});
+    const head = el("div",{class:"cat-head"},[el("span",{class:"grip",title:"Drag to reorder sections","aria-hidden":"true",text:"⠿"}),emo,tit,el("span",{class:"count",text:c.items.length+(c.suggested?" · suggested":"")})]);
+    if(!c.hidden && c.items.length===0){
+      const del = el("button",{class:"del",title:"Delete empty section","aria-label":"Delete empty section",text:"✕"});
+      del.addEventListener("click",()=>{state.categories=state.categories.filter(x=>x!==c); changed(); render();});
+      head.append(del);
+    }
+    const sec = el("section",{class:"cat"+(c.hidden?" hidden-bucket":""),"data-cat":c.id},[head]);
+    if(c.why) sec.append(el("p",{class:"why",text:c.why}));
+    sec.append(ul);
+    boardEl.append(sec);
+    sortables.push(Sortable.create(ul,{group:"items",animation:150,ghostClass:"ghost",chosenClass:"chosen",delay:120,delayOnTouchOnly:true,onEnd:readDom}));
+  }
+  sortables.push(Sortable.create(boardEl,{handle:".grip",animation:150,ghostClass:"ghost",onEnd:readDom}));
+  $("#notes").value = state.notes||"";
+  const d=$("#done"); d.textContent = state.done ? "✓ Done (reopen)" : "Done"; d.classList.toggle("isdone", state.done);
+}
+
+function readDom(){
+  const byId = Object.fromEntries(state.categories.map(c=>[c.id,c]));
+  state.categories = [...boardEl.querySelectorAll("section.cat")].map(sec=>{
+    const c = byId[sec.dataset.cat];
+    c.items = [...sec.querySelectorAll("li.item")].map(li=>li.dataset.slug);
+    return c;
+  });
+  changed(); render();
+}
+
+function changed(){ if(state.done){ state.done=false; } clearTimeout(saveTimer); saveTimer=setTimeout(save,500); setStatus("Unsaved"); }
+
+async function save(){
+  const body = {base: BASE, categories: state.categories, notes: state.notes, done: state.done, updatedAt: new Date().toISOString()};
+  const json = JSON.stringify([body.categories, body.notes, body.done]);
+  if(json===lastJson){ setStatus(ref?"Saved":"Saved in this browser"); return; }
+  if(!ref){ try{ localStorage.setItem("readme-sorter-"+BASE, JSON.stringify(body)); }catch(e){} lastJson=json; setStatus("Saved in this browser"); return; }
+  if(saving){ pending=true; return; }
+  saving=true; setStatus("Saving…");
+  try{ await ref.set(body); lastJson=json; setStatus("Saved"); }
+  catch(e){ setStatus(e && e.code==="invalid_argument" ? "Read-only" : "Not saved, retrying", true); if(e && e.code==="unavailable") setTimeout(save,1500); }
+  finally{ saving=false; if(pending){ pending=false; save(); } }
+}
+
+$("#notes").addEventListener("input",e=>{ state.notes=e.target.value; changed(); });
+$("#showDesc").addEventListener("change",e=>boardEl.classList.toggle("show-desc",e.target.checked));
+$("#addCat").addEventListener("click",()=>{
+  const id="c"+Date.now().toString(36);
+  const hiddenIdx = state.categories.findIndex(c=>c.hidden);
+  const c={id,emoji:"✨",title:"New section",items:[]};
+  if(hiddenIdx>=0) state.categories.splice(hiddenIdx,0,c); else state.categories.push(c);
+  changed(); render(); const t=document.getElementById("title-"+id); t && (t.focus(), t.select());
+});
+$("#resetWrap").replaceChildren(resetBtn());
+function resetBtn(){ const b=el("button",{id:"reset",text:"Reset to live layout"}); b.addEventListener("click",()=>{ $("#resetWrap").replaceChildren(); const yes=el("button",{class:"small",text:"Yes, reset"}), no=el("button",{class:"small",text:"Cancel"}); $("#resetWrap").append(el("span",{class:"confirm"},[document.createTextNode("Lose your changes? "),yes,no])); yes.addEventListener("click",()=>{ state={categories:structuredClone(SUGGESTION),notes:state.notes,done:false}; $("#resetWrap").replaceChildren(resetBtn()); changed(); render(); }); no.addEventListener("click",()=>$("#resetWrap").replaceChildren(resetBtn())); }); return b; }
+$("#done").addEventListener("click",()=>{ const was=state.done; clearTimeout(saveTimer); state.done=!was; render(); save(); setStatus(state.done?"Done, Claude can read it":"Reopened"); });
+
+render();
+
+(async()=>{
+  try{ const raw=localStorage.getItem("readme-sorter-"+BASE); if(raw){ const s=JSON.parse(raw); if(s && s.categories){ state={categories:s.categories,notes:s.notes||"",done:!!s.done}; render(); } } }catch(e){}
+  let timer = setTimeout(()=>setStatus("Can't reach storage yet", true), 10000);
+  try{ db = window.claude && await window.claude.use("db"); }catch(e){ db=null; }
+  if(!db){ clearTimeout(timer); setStatus("Saved in this browser only"); return; }
+  ref = db.doc("board/layout");
+  let first = true;
+  ref.onSnapshot(snap=>{
+    if(!snap.metadata.fromCache){ clearTimeout(timer); }
+    if(snap.exists && snap.data().base===BASE){
+      const d=snap.data(); const json=JSON.stringify([d.categories,d.notes||"",!!d.done]);
+      if(json!==lastJson && !saving && !saveTimer_active()){ state={categories:structuredClone(d.categories),notes:d.notes||"",done:!!d.done}; lastJson=json; render(); }
+      setStatus(state.done?"Done, Claude can read it":"Saved");
+    } else if(first){ setStatus("Live layout loaded"); }
+    first=false;
+  }, e=>{ clearTimeout(timer); setStatus("Storage unavailable", true); ref=null; });
+})();
+function saveTimer_active(){ return statusEl.textContent==="Unsaved"; }
+</script>
